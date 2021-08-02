@@ -1,0 +1,50 @@
+name: Manually triggered workflow To Run a python file
+#description:  Manually triggered workflow To Run a python file which is computationally infeasible on my computer
+on:
+  workflow_dispatch:
+    inputs:
+      file-name:
+        description: 'Name of the input file(with extention)'
+        default: 'file.py'
+        required: true
+      output-file:
+        description: 'Name of the output file(with extention) or multiple files separated by commas'
+        default: 'out.jpg'
+        required: true
+
+jobs:
+  Run-Python-Script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+     
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          #architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - run: pip install sympy
+      - run: pip install matplotlib
+      - run: pip install numpy
+      - run: sudo mkdir result
+      
+      - run: python ${{ github.event.inputs.file-name }}
+      - run: ls
+      - run: sudo cp ${{ github.event.inputs.output-file }} result
+#       - name: setup git config
+#         run: |
+#           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+#           git config user.name "GitHub Actions Bot"
+#           git config user.email "<>"
+#           git pull origin main
+#       - name: commit
+#         run: |
+#           # Stage the file, commit and push
+#           git add output
+#           git commit -m "images uploaded automatically"
+#           git push origin main
+      - name: upload img
+        uses: actions/upload-artifact@v2
+        with:
+          name: Output-Image
+          path: result/
