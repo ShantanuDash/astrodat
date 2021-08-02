@@ -5,11 +5,11 @@ on:
     inputs:
       file-name:
         description: 'Name of the input file(with extention)'
-        default: 'file.py'
+        default: 'qp.py'
         required: true
       output-file:
         description: 'Name of the output file(with extention) or multiple files separated by commas'
-        default: 'out.jpg'
+        default: '*.txt'
         required: true
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           #architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      - run: pip install sympy
+      - run: pip install pandas
       - run: pip install matplotlib
       - run: pip install numpy
       - run: sudo mkdir result
@@ -40,11 +40,11 @@ jobs:
 #       - name: commit
 #         run: |
 #           # Stage the file, commit and push
-#           git add output
-#           git commit -m "images uploaded automatically"
+#           git add result
+#           git commit -m "output generated"
 #           git push origin main
-      - name: upload img
+      - name: upload data
         uses: actions/upload-artifact@v2
         with:
-          name: Output-Image
+          name: Output-data
           path: result/
