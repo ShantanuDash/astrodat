@@ -75,35 +75,35 @@ np.savetxt('out_n_6.txt',p)
 # In[ ]:
 
 
-q=np.zeros((30,phase.shape[1]))
-n=10
-for t in range(phase.shape[1]):
-    for i in range(30):
-        m=i
-        if(m!=n):
-            q[i,t]=closurephase(m,n,t,30) 
+# q=np.zeros((30,phase.shape[1]))
+# n=10
+# for t in range(phase.shape[1]):
+#     for i in range(30):
+#         m=i
+#         if(m!=n):
+#             q[i,t]=closurephase(m,n,t,30) 
 
 
-# In[ ]:
+# # In[ ]:
 
 
-np.savetxt('out_n_10.txt',q)
+# np.savetxt('out_n_10.txt',q)
 
 
-# In[ ]:
+# # In[ ]:
 
 
-r=np.zeros((30,phase.shape[1]))
-n=21
-for t in range(phase.shape[1]):
-    for i in range(30):
-        m=i
-        if(m!=n):
-            r[i,t]=closurephase(m,n,t,30) 
+# r=np.zeros((30,phase.shape[1]))
+# n=21
+# for t in range(phase.shape[1]):
+#     for i in range(30):
+#         m=i
+#         if(m!=n):
+#             r[i,t]=closurephase(m,n,t,30) 
 
 
-# In[ ]:
+# # In[ ]:
 
 
-np.savetxt('out_n_21.txt',r)
+# np.savetxt('out_n_21.txt',r)
 
