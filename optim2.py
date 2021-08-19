@@ -50,7 +50,7 @@ def cp(m,n,time,N):
 
 phase=phase.to_numpy()
 
-cols=100#phase.shape[1]
+cols=phase.shape[1]
 p=np.zeros((30,cols))
 n=6 # fixed antenna
 for t in range(cols):
