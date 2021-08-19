@@ -27,7 +27,7 @@ for i in range(435):
   if fl==0:
     notFuncAnt.append(i)
 
-for i in range(phase.shape[0]):
+for i in range(phase_total.shape[0]):
   if i not in notFuncAnt:
     phase_total[i][phase_total[i]==0]=np.nan
 
